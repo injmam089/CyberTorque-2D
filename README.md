@@ -1,158 +1,306 @@
-# 🏎️ Apex Cyber Drive 2D — High-Performance C++ Arcade Racing Game
+# 🏎️ CyberTorque 2D
 
-[![Language](https://img.shields.io/badge/Language-C%2B%2B14-blue.svg)](https://en.wikipedia.org/wiki/C%2B%2B14)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20(Win32)-lightgrey.svg)](https://learn.microsoft.com/en-us/windows/win32/)
-[![Dependencies](https://img.shields.io/badge/Dependencies-Zero%20External%20Libs-brightgreen.svg)]()
-[![Graphics](https://img.shields.io/badge/Graphics-Double--Buffered%20GDI%20%2F%20GDI%2B-orange.svg)]()
-[![Audio](https://img.shields.io/badge/Audio-Real--Time%20Procedural%20PCM%20Synthesizer-purple.svg)]()
+**CyberTorque 2D** is a high-performance **2D top-down arcade racing game** built from scratch in **C++** using native Windows APIs.
 
-> A feature-complete **2D Top-Down Arcade Highway Racing Game** engineered from scratch in pure **C++** using native **Win32 APIs**, **Double-Buffered Vector GDI Graphics**, and a custom **Real-Time Procedural PCM Audio Synthesizer** (WinMM) — requiring **zero third-party game engines or external DLLs**.
+The project focuses on custom game-engine fundamentals rather than relying on third-party game engines. It includes vehicle physics, drifting, AI traffic, police pursuit, particle effects, procedural audio, garage upgrades, persistent save data, and a custom double-buffered rendering pipeline.
 
----
-
-## 📸 Overview & Key Highlights
-
-**Apex Cyber Drive 2D** combines responsive arcade vehicle dynamics, multi-lane highway traffic AI, procedural roadside nature rendering, and a retro synthwave procedural audio engine into a lightweight, standalone Windows executable running at a rock-solid 60 FPS.
-
-```
-       ____________________________________________________________________
-      |  [SCORE: 014250]        PACIFIC COASTLINE PARKWAY       [TIME: 01:24.50]  |
-      |--------------------------------------------------------------------|
-      |   (Tree)   |   |   |   |   |   |   |   |   |   |   |   |   (Tree)  |
-      |  (Foliage) | [Curb] |   |   | [Traffic: Sedan]  | [Curb] |(Blossom)|
-      |   (Rock)   |   |    |   |   |       |       |   |   |    | (Pine)  |
-      |            |   |    | [Player: Supercar]    |   |   |    |         |
-      |   (Bush)   |   |    |   |   |       |       |   |   |    | (Bush)  |
-      |  (Forest)  | [Curb] |   |   | [Police Cruiser]  | [Curb] |(Forest) |
-      |--------------------------------------------------------------------|
-      | [WASD] Drive   [Space] Drift   [Shift] Nitro Boost   [Speed: 165 MPH]  |
-      |____________________________________________________________________|
-```
+![C++](https://img.shields.io/badge/C%2B%2B-14-blue)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
+![Graphics](https://img.shields.io/badge/Graphics-Win32%20GDI%2FGDI%2B-orange)
+![Audio](https://img.shields.io/badge/Audio-Procedural%20PCM-purple)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
 
-## 🌟 Core Features
+## 🎮 Features
 
-### 1. 🏎️ Advanced 2D Vehicle Physics & Handling
-- **Rigid-Body 2D Dynamics**: Forward throttle, progressive braking, reverse, and inertia curves.
-- **Power Sliding & Controlled Drifting**: Pressing `Spacebar` while turning initiates controlled lateral slides with counter-steering control and continuous Nitro recharge.
-- **Continuous Skid Marks & Particle FX**: Trailing tire skid marks buffer, tire smoke puffs during slides, exhaust nitro flames, and crash impact sparks.
-- **4 Distinct Vehicle Classes**:
-  - **Apex Falcon**: Aerodynamic Supercar with coke-bottle curves, carbon splitter, glass cockpit dome with glare reflection, and dual-tier GT wing.
-  - **Viper GT**: American Muscle Car with widebody flared fenders, power hood scoop, dual racing stripes, and drag radials.
-  - **Cyber Phantom**: Le Mans Hypercar with front aero tunnels, teardrop cockpit, Le Mans center shark fin, and continuous LED lightblade.
-  - **Titan Enforcer**: Heavy armored GT with steel bull-bar push bumper, armored wheel arches, and roof rails.
+### 🏎️ Vehicle Physics
 
-### 2. 🌲 Procedural Roadside Nature & Scenery
-- **Multi-Layered Tree Rendering**: Organic oak trees with dark shadow underlayers, vibrant green leaf canopies, sunlight highlights, and soft ground shadows.
-- **Diverse Flora**: Evergreen pines, cherry blossom trees, flowering bushes with blossom dots, and granite boulders.
-- **Detailed Highway Infrastructure**: Textured gravel shoulders, red/white curbs, solid yellow center median, dashed white lane dividers, overhead checkpoint and finish line truss arches.
+* Acceleration, braking, reverse, and inertia-based movement
+* Steering and responsive arcade handling
+* Controlled drifting and power sliding
+* Nitro boost system
+* Tire skid marks and smoke effects
+* Crash impact and particle effects
+* Multiple vehicle classes with different visual designs
 
-### 3. 🚙 Multi-Lane AI Traffic & Police Pursuits
-- **Intelligent Traffic AI**: Sedans, Sports Coupes, 18-Wheeler Semi-Trucks (with chrome cabs and corrugated trailers), and Police Cruisers.
-- **Smooth Spring-Damper Lane Switching**: AI cars glide smoothly across lanes along natural S-curves.
-- **Police Pursuit AI**: Police cruisers chase the player with aggressive interception and dual-color flashing LED rooftop strobes.
-- **"Close Call" Near-Miss Scoring**: Rewards +500 combo points and credits for threading tight gaps at high speed.
+### 🚗 AI Traffic System
 
-### 4. 🎵 Real-Time Procedural PCM Audio Synthesizer
-- Built using native Windows Multimedia (`waveOut` / WinMM) running on a dedicated worker thread.
-- **Zero Audio Files Required**: Procedurally generates soundwaves in real-time:
-  - Dynamic RPM engine revving sound modulated by player throttle.
-  - White-noise filtered tire screeching during power slides.
-  - Resonant whoosh sound on Nitro Overdrive.
-  - Crash explosion booms, checkpoint chimes, and coin pickups.
-  - Multi-channel retro Synthwave background soundtrack with bassline and melody.
+* Multi-lane highway traffic
+* Multiple traffic vehicle types
+* Smooth lane switching
+* Collision detection
+* Police pursuit vehicles
+* Dynamic near-miss scoring
 
-### 5. 🛠️ Garage Tuning & Persistence
-- **Performance Upgrades**: Upgrade **Top Speed**, **Acceleration**, **Handling / Grip**, and **Nitro Capacity** (5 levels per stat).
-- **Custom Paint Schemes**: 5 selectable high-gloss paint finishes per vehicle.
-- **Persistent Save System**: Automatically saves progress, unlocked cars, credits, and high scores to binary save storage (`savegame.dat`).
+### 🌲 Procedural Environment
+
+* Procedurally rendered roadside scenery
+* Trees, bushes, flowers, rocks, and other vegetation
+* Highway shoulders and lane markings
+* Curbs and road infrastructure
+* Checkpoint and finish-line structures
+
+### 🎵 Procedural Audio
+
+CyberTorque 2D generates audio at runtime instead of depending on external sound files.
+
+The custom audio system includes:
+
+* Dynamic engine RPM sounds
+* Tire screeching
+* Nitro boost effects
+* Crash sounds
+* Checkpoint and pickup sounds
+* Procedurally generated synthwave-style background music
+
+Audio is generated using the Windows **WinMM `waveOut` API**.
+
+### 🛠️ Garage & Upgrades
+
+Players can improve their vehicle through the garage system.
+
+Available upgrades include:
+
+* Top Speed
+* Acceleration
+* Handling / Grip
+* Nitro Capacity
+
+The game also supports vehicle paint customization and persistent player progress.
+
+### 💾 Save System
+
+Game progress is stored locally, including:
+
+* Unlocked vehicles
+* Credits
+* Upgrade progress
+* High scores
+* Player progression
 
 ---
 
-## 🕹️ Controls
+## 🎮 Controls
 
-| Action | Primary Key | Secondary Key |
-| :--- | :--- | :--- |
-| **Accelerate / Drive** | `W` | `Up Arrow` |
-| **Steer Left / Right** | `A` / `D` | `Left` / `Right Arrow` |
-| **Brake / Reverse** | `S` | `Down Arrow` |
-| **2D Drift / Handbrake** | `Spacebar` | - |
-| **Nitro Boost** | `Left Shift` | `N` |
-| **Mute / Unmute Audio** | `M` | - |
-| **Pause Game** | `Esc` | `P` |
-| **Menu Select / Buy Upgrade** | `Enter` | `Spacebar` |
-| **Garage Car Switch** | `A` / `D` | `Left` / `Right Arrow` |
+| Action                | Key                |
+| --------------------- | ------------------ |
+| Accelerate            | `W` / `↑`          |
+| Steer Left            | `A` / `←`          |
+| Steer Right           | `D` / `→`          |
+| Brake / Reverse       | `S` / `↓`          |
+| Drift                 | `Space`            |
+| Nitro Boost           | `Left Shift` / `N` |
+| Mute / Unmute         | `M`                |
+| Pause                 | `Esc` / `P`        |
+| Menu Select / Buy     | `Enter` / `Space`  |
+| Switch Garage Vehicle | `A` / `D`          |
 
 ---
 
-## 🏗️ Architecture & Technology Stack
+## 🧠 Technical Architecture
 
-```
-   ┌────────────────────────────────────────────────────────┐
-   │                     Apex Cyber Drive 2D                │
-   ├───────────────────┬──────────────────┬─────────────────┤
-   │   Game Logic &    │   Double-Buffer  │   Procedural    │
-   │     Physics       │  Vector Renderer │ PCM Synthesizer │
-   │  (Car, Traffic)   │  (GDI / GDI+)    │ (WinMM waveOut) │
-   └─────────┬─────────┴────────┬─────────┴────────┬────────┘
-             │                  │                  │
-             └──────────────────┼──────────────────┘
-                                │
-                    ┌───────────▼───────────┐
-                    │ Native Windows 32 API │
-                    └───────────────────────┘
+CyberTorque 2D is organized into separate systems for gameplay, rendering, audio, vehicles, traffic, and effects.
+
+```text
+                    CyberTorque 2D
+                          │
+        ┌─────────────────┼─────────────────┐
+        │                 │                 │
+   Game Systems       Rendering           Audio
+        │                 │                 │
+   ┌────┼────┐       Win32 GDI/GDI+    WinMM waveOut
+   │    │    │
+  Car Traffic Road
+   │    │    │
+Physics AI  Environment
+        │
+        ▼
+   Particle System
 ```
 
-- **Language**: C++ (C++14 standard)
-- **Graphics Pipeline**: Win32 GDI & GDI+ Double-Buffered Rendering (zero screen tearing, 60 FPS)
-- **Audio Pipeline**: Custom PCM 16-bit 44.1kHz real-time software audio synthesizer
-- **Target OS**: Windows 7 / 8 / 10 / 11 (32-bit & 64-bit compatible)
-- **Dependencies**: Native Windows SDK (`lgdi32`, `lmsimg32`, `lwinmm`, `lgdiplus`)
+### Technology Stack
+
+| Technology       | Purpose                             |
+| ---------------- | ----------------------------------- |
+| **C++14**        | Core programming language           |
+| **Win32 API**    | Windows application and game window |
+| **GDI / GDI+**   | 2D rendering                        |
+| **WinMM**        | Real-time audio output              |
+| **MinGW / GCC**  | Build environment                   |
+| **Make / Batch** | Build automation                    |
+
+The project does not depend on Unity, Unreal Engine, SDL, SFML, or other external game engines.
 
 ---
 
 ## 📂 Project Structure
 
+```text
+CyberTorque-2D/
+│
+├── AudioSynth.cpp
+├── AudioSynth.h
+│
+├── Car.cpp
+├── Car.h
+│
+├── Game.cpp
+├── Game.h
+│
+├── ParticleSystem.cpp
+├── ParticleSystem.h
+│
+├── Renderer.cpp
+├── Renderer.h
+│
+├── Road.cpp
+├── Road.h
+│
+├── Traffic.cpp
+├── Traffic.h
+│
+├── Types.h
+├── main.cpp
+│
+├── Makefile
+├── build.bat
+└── README.md
 ```
-ApexCyberDrive/
-├── AudioSynth.h / .cpp    # Procedural PCM audio synthesizer & synthwave sequencer
-├── Car.h / .cpp           # 2D Vehicle rigid body physics, drifting & upgrades
-├── Traffic.h / .cpp       # Multi-lane AI traffic, police pursuit AI & collision detection
-├── Road.h / .cpp          # Straight 4-lane speedway, track progression & nature generation
-├── ParticleSystem.h / .cpp# 2D Tire skid mark buffer, tire smoke, sparks, and flames
-├── Renderer.h / .cpp      # 2D Double-buffered vector renderer, car sprites & UI HUD
-├── Game.h / .cpp          # Core game loop, state machine, save profiles & input
-├── Types.h                # 2D Vector math, Color structs, enums & state definitions
-├── main.cpp               # WinMain entry point, window management & 60 FPS timing
-├── Makefile               # MinGW build automation file
-├── build.bat              # One-click Windows compilation batch script
-└── README.md              # Comprehensive documentation
-```
+
+### Main Components
+
+**`Car`**
+Handles vehicle movement, physics, steering, drifting, upgrades, and vehicle behavior.
+
+**`Traffic`**
+Controls AI traffic vehicles, lane movement, police pursuit, and collision interactions.
+
+**`Road`**
+Manages highway layout, progression, road elements, and procedural scenery.
+
+**`Renderer`**
+Responsible for the game's double-buffered 2D graphics and HUD rendering.
+
+**`ParticleSystem`**
+Handles tire smoke, skid marks, sparks, flames, and other visual effects.
+
+**`AudioSynth`**
+Generates procedural game audio and background music using PCM synthesis.
+
+**`Game`**
+Controls the main game loop, game states, input, scoring, progression, and save system.
+
+**`Types`**
+Contains shared data structures, vector mathematics, colors, enums, and game-state definitions.
 
 ---
 
-## 🚀 How to Build and Run
+## 🚀 Build & Run
 
-### Prerequisites
-- Windows OS (Windows 7 or later)
-- MinGW / GCC (`g++`) or Microsoft Visual C++ (MSVC)
+### Requirements
 
-### Option 1: Quick One-Click Build
-Double-click `build.bat` in the project root directory.
+* Windows 7 or later
+* MinGW / GCC or Microsoft Visual C++
+* Windows SDK
 
-### Option 2: Command Line (MinGW / GCC)
-Open PowerShell or Command Prompt in the project folder and run:
-```powershell
+### Option 1 — Build Script
+
+Run:
+
+```text
+build.bat
+```
+
+The project will compile automatically.
+
+### Option 2 — MinGW / GCC
+
+Open Command Prompt or PowerShell inside the project directory:
+
+```bash
 g++ -O3 -std=c++14 AudioSynth.cpp ParticleSystem.cpp Road.cpp Car.cpp Traffic.cpp Renderer.cpp Game.cpp main.cpp -o CyberTorque.exe -lgdi32 -lmsimg32 -lwinmm -lgdiplus -mwindows
 ```
 
-### Option 3: Launch Executable
-```powershell
+Then launch:
+
+```bash
 .\CyberTorque.exe
 ```
 
 ---
 
-## 📜 License
-This project is open-source and available under the **MIT License**.
+## 🎯 Project Goals
+
+CyberTorque 2D was developed to explore practical concepts involved in building a game without relying on a commercial game engine.
+
+The project demonstrates:
+
+* Object-oriented programming in C++
+* Real-time game loops
+* 2D physics and movement
+* Collision detection
+* AI behavior
+* Procedural rendering
+* Particle systems
+* Real-time audio synthesis
+* Windows API programming
+* Game-state management
+* File-based persistence
+* Performance-oriented rendering
+
+---
+
+## 📸 Screenshots
+
+Add screenshots or gameplay GIFs here:
+
+```text
+docs/
+├── gameplay.png
+├── garage.png
+├── traffic.png
+└── gameplay.gif
+```
+
+Example:
+
+```markdown
+![Gameplay](docs/gameplay.png)
+```
+
+---
+
+## 🔮 Future Improvements
+
+Possible future enhancements include:
+
+* More tracks and environments
+* Additional vehicles
+* Advanced opponent AI
+* Multiplayer support
+* Leaderboards
+* More environmental effects
+* Improved audio system
+* Controller support
+* Additional game modes
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 👨‍💻 Author
+
+**Injmam**
+
+BCA Student | Cybersecurity & Software Development
+
+GitHub: [@injmam089](https://github.com/injmam089)
+
+---
+
+⭐ If you find this project interesting, consider giving the repository a star.
